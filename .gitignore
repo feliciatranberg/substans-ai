@@ -1,0 +1,30 @@
+# Node / JS
+node_modules/
+dist/
+build/
+.cache/
+.npm/
+.pnpm-store/
+*.log
+*.lock
+!.yarn.lock
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Sass / temp
+.sass-cache/
+*.map
+
+# WordPress / PHP (valfritt)
+vendor/
+*.mo
+wp-config.php
+
+# Misc
+config.sh
+theme-package/
+sprite.symbol.html

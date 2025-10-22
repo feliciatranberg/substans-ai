@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
-import ScrollToTopButton from "./ScrollToTopButton";
 
 export default function Layout({ children }) {
   const { pathname } = useLocation();
@@ -17,7 +16,6 @@ export default function Layout({ children }) {
       <NavBar />
       <main className="flex-1">{children}</main>
       <Footer />
-      <ScrollToTopButton />
     </div>
   );
 }
