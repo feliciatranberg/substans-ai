@@ -7,7 +7,7 @@ export default function Gallery({ items = [], showCaptions = true }) {
           {items.map((it, idx) => (
             <article
               key={idx}
-              className="flex-shrink-0 w-2/3 snap-start rounded-xl overflow-hidden bg-neutral-900/50 border border-neutral-800 first:ml-0 last:mr-0"
+              className="flex-shrink-0 w-full snap-start rounded-xl overflow-hidden bg-neutral-900/50 border border-neutral-800 first:ml-0 last:mr-0"
             >
               <div className="aspect-[4/5] bg-neutral-700">
                 {it.type === "video" ? (
