@@ -21,20 +21,8 @@ export default function NavBar() {
     >
       <div className="container mx-auto px-6">
         <div className="h-16 flex items-center justify-between relative">
-          {/* Navigation */}
-          <nav className="flex items-center gap-6">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                `text-sm transition-colors ${
-                  isActive
-                    ? "text-white font-semibold"
-                    : "text-gray-400 hover:text-white"
-                }`
-              }
-            >
-              Hem
-            </NavLink>
+          {/* Vänster sida – Live */}
+          {/* <nav className="flex items-center gap-6">
             <NavLink
               to="/live"
               className={({ isActive }) =>
@@ -47,6 +35,17 @@ export default function NavBar() {
             >
               Live
             </NavLink>
+          </nav> */}
+
+          {/* Logotyp i mitten */}
+          <div className="absolute left-1/2 -translate-x-1/2">
+            <Link to="/" aria-label="Start">
+              <img src={logo} alt="Substans logotyp" className="h-8 w-auto" />
+            </Link>
+          </div>
+
+          {/* Höger sida – Studio */}
+          {/* <nav className="flex items-center gap-6">
             <NavLink
               to="/studio"
               className={({ isActive }) =>
@@ -59,16 +58,7 @@ export default function NavBar() {
             >
               Studio
             </NavLink>
-          </nav>
-
-          {/* Centered logo */}
-          <div className="absolute left-1/2 -translate-x-1/2">
-            <Link to="/" aria-label="Start">
-              <img src={logo} alt="Substans logotyp" className="h-8 w-auto" />
-            </Link>
-          </div>
-
-          <div className="w-24" />
+          </nav> */}
         </div>
       </div>
     </header>
