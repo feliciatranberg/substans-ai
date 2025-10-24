@@ -1,5 +1,5 @@
 import Hero from "../components/Hero";
-import Gallery from "../components/Galleryjs";
+import Gallery from "../components/Gallery";
 import Contact from "../components/Contact";
 import SEO from "../components/SEO";
 

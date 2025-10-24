@@ -1,6 +1,5 @@
 // Sociala länkar — uppdatera till dina riktiga
 export default {
-  github: "https://github.com/ditt-anv",
-  linkedin: "https://www.linkedin.com/in/ditt-anv/",
-  instagram: "https://www.instagram.com/ditt-anv/",
+  facebook: "https://www.facebook.com/profile.php?id=100078207856471/",
+  instagram: "https://www.instagram.com/substansgbg/",
 };

@@ -1,10 +1,41 @@
-// Galleri för Substans Studio — byt ut bilderna i src/assets/
-import img1 from "../assets/studio-01.jpg";
-import img2 from "../assets/studio-02.jpg";
-import img3 from "../assets/studio-03.jpg";
+// src/data/studioProjects.js
+// 9:16-videos (reels)
+import vidWeb from "../assets/reel-01.mp4";
+import vidSoMe from "../assets/reel-02.mp4";
+import vidAI from "../assets/reel-01.mp4"; // tillfälligt samma som 02 – byt till reel-03.mp4 när du har den
 
 export default [
-  { src: img1, alt: "Studio 01", caption: "Webb" },
-  { src: img2, alt: "Studio 02", caption: "SoMe" },
-  { src: img3, alt: "Studio 03", caption: "AI" },
+  {
+    type: "video",
+    src: vidWeb,
+    alt: "Reel Webb",
+    caption: "Webb",
+    aspect: "9/16",
+    autoplay: true,
+    loop: true,
+    controls: false,
+    muted: true,
+  },
+  {
+    type: "video",
+    src: vidSoMe,
+    alt: "Reel SoMe",
+    caption: "SoMe",
+    aspect: "9/16",
+    autoplay: true,
+    loop: true,
+    controls: false,
+    muted: true,
+  },
+  {
+    type: "video",
+    src: vidAI,
+    alt: "Reel AI",
+    caption: "AI",
+    aspect: "9/16",
+    autoplay: true,
+    loop: true,
+    controls: false,
+    muted: true,
+  },
 ];

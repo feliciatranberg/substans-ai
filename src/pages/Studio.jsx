@@ -1,7 +1,7 @@
 import Hero from "../components/Hero";
-import Gallery from "../components/Galleryjs";
 import Contact from "../components/Contact";
 import SEO from "../components/SEO";
+import Gallery from "../components/Gallery.jsx";
 
 import headerImage from "../assets/studio-hero.jpg";
 import studioItems from "../data/studioProjects";

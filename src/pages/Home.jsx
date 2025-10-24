@@ -1,22 +1,35 @@
+// src/pages/Home.jsx
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 import Hero from "../components/Hero";
-import SectionCard from "../components/SectionCard";
+import Gallery from "../components/Gallery";
 import Contact from "../components/Contact";
 import SEO from "../components/SEO";
 
-// Byt hero-bakgrund här:
-import heroImage from "../assets/hero-bg.jpg"; // eller hero-bg.mp4 för video
-import liveThumb from "../assets/live-01.jpg";
-import studioThumb from "../assets/studio-01.jpg";
+import heroImage from "../assets/hero-bg.jpg";
+
+// Data
+import studioItems from "../data/studioProjects";
+import liveItems from "../data/liveGallery";
 
 export default function Home() {
+  const location = useLocation();
+
+  // Gör så att /#studio och /#live scrollar till rätt sektion
+  useEffect(() => {
+    if (location.hash) {
+      const el = document.querySelector(location.hash);
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [location]);
+
   return (
     <>
       <SEO
-        title="Hem"
+        title="Substans"
         description="Substans – Live & Studio. Portfölj, produktion och design."
       />
-
-      <div id="top" />
 
       <Hero
         title="Substans"
@@ -25,23 +38,26 @@ export default function Home() {
         backgroundImage={heroImage}
       />
 
-      <section className="container mx-auto px-6 my-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <SectionCard
-            to="/live"
-            image={liveThumb}
-            title="Substans Live"
-            text="Event, scen och artister. Dokumentation, upplevelser och energi."
-            cta="Utforska Live →"
-          />
-          <SectionCard
-            to="/studio"
-            image={studioThumb}
-            title="Substans Studio"
-            text="Design, branding och strategi. Projektexempel och case."
-            cta="Utforska Studio →"
-          />
+      {/* LIVE */}
+      <section id="live" className="container mx-auto px-6 my-16">
+        <div className="mb-8 max-w-3xl">
+          <h2 className="text-xl font-semibold text-white">Live</h2>
+          <p className="mt-2 text-gray-400">
+            Utdrag från event, scen och backstage. Ögonblick och energi.
+          </p>
         </div>
+        <Gallery items={liveItems} />
+      </section>
+
+      {/* STUDIO */}
+      <section id="studio" className="container mx-auto px-6 my-16">
+        <div className="mb-8 max-w-3xl">
+          <h2 className="text-xl font-semibold text-white">Studio</h2>
+          <p className="mt-2 text-gray-400">
+            Design, branding och strategi. Kreativa case och projekt.
+          </p>
+        </div>
+        <Gallery items={studioItems} />
       </section>
 
       <Contact />

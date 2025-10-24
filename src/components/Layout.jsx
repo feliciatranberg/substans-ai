@@ -13,7 +13,7 @@ export default function Layout({ children }) {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#0f0f0f] text-gray-200">
-      <NavBar />
+      {/* <NavBar /> */}
       <main className="flex-1">{children}</main>
       <Footer />
     </div>

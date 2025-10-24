@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FaGithub, FaLinkedin, FaInstagram, FaEnvelope } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaEnvelope } from "react-icons/fa";
 import socialLinks from "../data/socialLinks";
 
 const EMAIL = "hello@substans.studio";
@@ -29,26 +29,15 @@ export default function Contact() {
           </a>
 
           <div className="flex items-center gap-5 text-gray-400">
-            {socialLinks.github && (
+            {socialLinks.facebook && (
               <a
-                href={socialLinks.github}
+                href={socialLinks.facebook}
                 target="_blank"
                 rel="noreferrer"
                 aria-label="GitHub"
                 className="hover:text-white transition"
               >
-                <FaGithub size={22} />
-              </a>
-            )}
-            {socialLinks.linkedin && (
-              <a
-                href={socialLinks.linkedin}
-                target="_blank"
-                rel="noreferrer"
-                aria-label="LinkedIn"
-                className="hover:text-white transition"
-              >
-                <FaLinkedin size={22} />
+                <FaFacebook size={22} />
               </a>
             )}
             {socialLinks.instagram && (
