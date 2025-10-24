@@ -10,7 +10,7 @@ export default function About() {
       className="container mx-auto px-6 my-20"
       id="about"
     >
-      <div className=" text-center md:text-left">
+      <div className="">
         <h2 className="text-2xl font-semibold text-white">Om Substans</h2>
         <p className="mt-3 text-gray-400 leading-relaxed max-w-3xl mx-auto md:mx-0">
           Lorem Ipsum is simply dummy text of the printing and typesetting
@@ -18,10 +18,7 @@ export default function About() {
           since the 1500s, when an unknown printer took a galley of type and
           scrambled it to make a type specimen book. It has survived not only
           five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          remaining essentially unchanged.
         </p>
       </div>
     </motion.section>

@@ -9,7 +9,7 @@ export default function Hero({
 }) {
   return (
     <section className="relative">
-      <div className="w-full aspect-video overflow-hidden">
+      <div className="w-full overflow-hidden aspect-[9/12] sm:aspect-video md:aspect-[21/9]">
         {backgroundVideo ? (
           <video
             src={backgroundVideo}

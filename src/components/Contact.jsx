@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { FaFacebook, FaInstagram, FaEnvelope } from "react-icons/fa";
 import socialLinks from "../data/socialLinks";
 
-const EMAIL = "hello@substans.studio";
+const EMAIL = "felicia@substansgbg.se";
 
 export default function Contact() {
   return (

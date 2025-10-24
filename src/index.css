@@ -15,3 +15,46 @@ body,
 body {
   @apply bg-white text-slate-800 font-sans;
 }
+
+/* --- Ticker / Announcement bar --- */
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* maskar kanterna lite så texten inte “klipps” abrupt */
+.ticker-mask {
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 16px,
+    black calc(100% - 16px),
+    transparent
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 16px,
+    black calc(100% - 16px),
+    transparent
+  );
+}
+
+/* styr hastighet med --duration (ex: 28s) */
+.ticker-track {
+  animation: ticker-scroll var(--duration, 28s) linear infinite;
+}
+.ticker-paused .ticker-track {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ticker-track {
+    animation: none !important;
+    transform: none !important;
+  }
+}

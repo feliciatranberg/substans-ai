@@ -7,6 +7,7 @@ import Gallery from "../components/Gallery";
 import Contact from "../components/Contact";
 import About from "../components/About";
 import SEO from "../components/SEO";
+import TickerBar from "../components/TickerBar";
 
 import heroImage from "../assets/hero-bg.jpg";
 
@@ -27,13 +28,22 @@ export default function Home() {
 
   return (
     <>
+      <TickerBar
+        items={[
+          "Nästa event: 15 nov kl 20:00. Nefertiti, Göteborg",
+          "Li är snygg",
+          "Tralla lalala",
+        ]}
+        href="https://din-biljettlank.se/"
+        speed={30}
+      />
       <SEO
         title="Substans"
         description="Substans – Live & Studio. Portfölj, produktion och design."
       />
 
       <Hero
-        title="Substans"
+        title="Logga + film"
         // subtitle="Live • Studio"
         // intro="Modern, personlig och enkel portfolio. Musik, scen, design och strategi."
         backgroundImage={heroImage}
@@ -44,7 +54,8 @@ export default function Home() {
         <div className="mb-8 max-w-3xl">
           <h2 className="text-xl font-semibold text-white">Live</h2>
           <p className="mt-2 text-gray-400">
-            Utdrag från event, scen och backstage. Ögonblick och energi.
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
           </p>
         </div>
         <Gallery items={liveItems} />
@@ -55,7 +66,8 @@ export default function Home() {
         <div className="mb-8 max-w-3xl">
           <h2 className="text-xl font-semibold text-white">Studio</h2>
           <p className="mt-2 text-gray-400">
-            Design, branding och strategi. Kreativa case och projekt.
+            Lorem Ipsum is simply dummy text of the printing and typesetting
+            industry.
           </p>
         </div>
         <Gallery items={studioItems} />
