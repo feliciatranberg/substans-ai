@@ -1,8 +1,6 @@
-// src/data/studioProjects.js
-// 9:16-videos (reels)
 import vidWeb from "../assets/reel-01.mp4";
 import vidSoMe from "../assets/reel-02.mp4";
-import vidAI from "../assets/reel-01.mp4"; // tillfälligt samma som 02 – byt till reel-03.mp4 när du har den
+import vidAI from "../assets/dummy.jpg";
 
 export default [
   {

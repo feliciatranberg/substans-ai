@@ -5,6 +5,7 @@ import { useLocation } from "react-router-dom";
 import Hero from "../components/Hero";
 import Gallery from "../components/Gallery";
 import Contact from "../components/Contact";
+import About from "../components/About";
 import SEO from "../components/SEO";
 
 import heroImage from "../assets/hero-bg.jpg";
@@ -33,11 +34,11 @@ export default function Home() {
 
       <Hero
         title="Substans"
-        subtitle="Live • Studio"
-        intro="Modern, personlig och enkel portfolio. Musik, scen, design och strategi."
+        // subtitle="Live • Studio"
+        // intro="Modern, personlig och enkel portfolio. Musik, scen, design och strategi."
         backgroundImage={heroImage}
       />
-
+      <About />
       {/* LIVE */}
       <section id="live" className="container mx-auto px-6 my-16">
         <div className="mb-8 max-w-3xl">

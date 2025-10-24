@@ -4,7 +4,10 @@ import img2 from "../assets/live-02.jpg";
 import img3 from "../assets/live-03.jpg";
 
 export default [
-  { src: img1, alt: "Live 01", caption: "Event" },
-  { src: img2, alt: "Live 02", caption: "Artister" },
-  { src: img3, alt: "Live 03", caption: "Artister" },
+  { src: img1, alt: "Live 01" },
+  { src: img2, alt: "Live 02" },
+  { src: img3, alt: "Live 03" },
+  { src: img1, alt: "Live 01" },
+  { src: img2, alt: "Live 02" },
+  { src: img3, alt: "Live 03" },
 ];
