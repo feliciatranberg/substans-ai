@@ -35,7 +35,7 @@ export default function Home() {
           "Tralla lalala",
         ]}
         href="https://din-biljettlank.se/"
-        speed={30}
+        speed={10}
       />
       <SEO
         title="Substans"

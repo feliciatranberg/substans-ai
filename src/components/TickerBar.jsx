@@ -5,7 +5,7 @@ export default function TickerBar({
   items = [],
   href = null, // om satt: hela baren blir klickbar
   speed = 28, // sekunder för en hel loop
-  icon = <FaTicketAlt />, // valfri ikon till vänster
+  icon = <FaTicketAlt />,
   dismissible = true, // om den ska kunna stängas
   storageKey = "ticker:dismissed",
   bgClass = "bg-neutral-900",
@@ -44,7 +44,7 @@ export default function TickerBar({
     >
       <div className="container mx-auto px-6">
         <div className="flex items-center gap-3 py-2">
-          <span className="opacity-80">{icon}</span>
+          {/* <span className="opacity-80">{icon}</span> */}
 
           <Wrapper
             {...wrapperProps}
@@ -60,7 +60,7 @@ export default function TickerBar({
             </div>
           </Wrapper>
 
-          {dismissible && (
+          {/* {dismissible && (
             <button
               onClick={onClose}
               className="shrink-0 p-2 rounded hover:bg-white/10"
@@ -68,7 +68,7 @@ export default function TickerBar({
             >
               <FaTimes />
             </button>
-          )}
+          )} */}
         </div>
       </div>
     </div>
