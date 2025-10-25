@@ -29,18 +29,12 @@ export default function Home() {
   return (
     <>
       <TickerBar
-        items={[
-          "Nästa event: 15 nov kl 20:00. Nefertiti, Göteborg",
-          "Li är snygg",
-          "Tralla lalala",
-        ]}
-        href="https://din-biljettlank.se/"
-        speed={10}
+        items={["Nästa event: 15 nov kl 20:00. Hornhuset, Stockholm"]}
+        speed={10} // slower = higher number
+        gapPx={40} // spacing between repeats
+        pauseOnHover={false}
       />
-      <SEO
-        title="Substans"
-        description="Substans – Live & Studio. Portfölj, produktion och design."
-      />
+      <SEO title="Substans" description="Substans – Live & Studio" />
 
       <Hero
         title="Logga + film"

@@ -1,75 +1,99 @@
-import { useEffect, useState, useMemo } from "react";
-import { FaTicketAlt, FaTimes } from "react-icons/fa";
+import { useEffect, useMemo, useRef, useState } from "react";
 
+/**
+ * Seamless, auto-filling marquee:
+ * - Measures text width and repeats it so one "half" covers the viewport
+ * - Duplicates that half for a perfect 0% -> -50% loop (no jump)
+ */
 export default function TickerBar({
-  items = [],
-  href = null, // om satt: hela baren blir klickbar
-  speed = 28, // sekunder för en hel loop
-  icon = <FaTicketAlt />,
-  dismissible = true, // om den ska kunna stängas
-  storageKey = "ticker:dismissed",
+  // Put your message(s) here; one string is fine
+  items = ["Nästa event: 15 nov kl 20:00. Nefertiti, Göteborg"],
+  href = null, // optional: make the whole bar clickable
+  speed = 32, // seconds per full loop (increase = slower)
+  gapPx = 48, // pixel gap between repeats
   bgClass = "bg-neutral-900",
   textClass = "text-neutral-100",
   borderClass = "border-b border-neutral-800",
+  pauseOnHover = false, // set true if you want hover pause
 }) {
-  const [dismissed, setDismissed] = useState(false);
+  const containerRef = useRef(null);
+  const measureRef = useRef(null);
+
+  const [repeats, setRepeats] = useState(8); // will be recalculated
   const [paused, setPaused] = useState(false);
 
+  // Build the base (join items with gap visually)
+  const baseTexts = useMemo(() => (items.length ? items : [""]), [items]);
+
+  // Recompute how many repeats we need so ONE half fills the viewport + buffer
   useEffect(() => {
-    if (!dismissible) return;
-    const saved = localStorage.getItem(storageKey);
-    setDismissed(saved === "1");
-  }, [dismissible, storageKey]);
+    const calc = () => {
+      if (!containerRef.current || !measureRef.current) return;
 
-  const onClose = () => {
-    setDismissed(true);
-    if (dismissible) localStorage.setItem(storageKey, "1");
-  };
+      const containerW = containerRef.current.offsetWidth;
+      const sampleW = measureRef.current.offsetWidth || 1;
 
-  // duplicerar innehållet så loopen blir sömlös
-  const loopItems = useMemo(() => [...items, ...items], [items]);
+      // How many repeats needed to fill + some buffer (1 extra width)
+      const needed = Math.max(
+        2,
+        Math.ceil((containerW + sampleW) / (sampleW + gapPx))
+      );
+      setRepeats(needed);
+    };
 
-  if (dismissed || items.length === 0) return null;
+    calc();
+    window.addEventListener("resize", calc);
+    return () => window.removeEventListener("resize", calc);
+  }, [items, gapPx]);
+
+  // Build ONE half (long enough), then duplicate it to get a seamless loop
+  const half = useMemo(() => {
+    const arr = [];
+    for (let i = 0; i < repeats; i++) {
+      for (let j = 0; j < baseTexts.length; j++) arr.push(baseTexts[j]);
+    }
+    return arr;
+  }, [repeats, baseTexts]);
+
+  const loopItems = useMemo(() => [...half, ...half], [half]);
 
   const Wrapper = href ? "a" : "div";
-  const wrapperProps = href ? { href } : {};
+  const wrapperProps = href ? { href, target: "_self", rel: "noopener" } : {};
 
   return (
     <div
-      className={`${bgClass} ${textClass} ${borderClass} ${paused ? "ticker-paused" : ""}`}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
+      className={`${bgClass} ${textClass} ${borderClass} ${pauseOnHover && paused ? "ticker-paused" : ""}`}
+      onMouseEnter={() => pauseOnHover && setPaused(true)}
+      onMouseLeave={() => pauseOnHover && setPaused(false)}
       role="region"
       aria-label="Aktuellt meddelande"
     >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center gap-3 py-2">
-          {/* <span className="opacity-80">{icon}</span> */}
+      <div ref={containerRef} className="container mx-auto">
+        {/* Invisible measurement span (one item) */}
+        <span
+          ref={measureRef}
+          className="absolute -z-10 opacity-0 whitespace-nowrap pointer-events-none"
+          style={{ position: "absolute" }}
+        >
+          {baseTexts.join("   ")}
+        </span>
 
-          <Wrapper
-            {...wrapperProps}
-            className="relative flex-1 overflow-hidden ticker-mask no-underline hover:opacity-90"
-            style={{ "--duration": `${speed}s` }}
+        <Wrapper
+          {...wrapperProps}
+          className="relative block overflow-hidden ticker-mask"
+          style={{ "--duration": `${speed}s` }}
+        >
+          <div
+            className="ticker-track whitespace-nowrap flex"
+            style={{ columnGap: `${gapPx}px` }}
           >
-            <div className="ticker-track whitespace-nowrap flex gap-10">
-              {loopItems.map((txt, i) => (
-                <span key={i} className="text-sm md:text-base">
-                  {txt}
-                </span>
-              ))}
-            </div>
-          </Wrapper>
-
-          {/* {dismissible && (
-            <button
-              onClick={onClose}
-              className="shrink-0 p-2 rounded hover:bg-white/10"
-              aria-label="Stäng meddelandet"
-            >
-              <FaTimes />
-            </button>
-          )} */}
-        </div>
+            {loopItems.map((txt, i) => (
+              <span key={i} className="text-sm md:text-base">
+                {txt}
+              </span>
+            ))}
+          </div>
+        </Wrapper>
       </div>
     </div>
   );
