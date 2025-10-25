@@ -9,7 +9,8 @@ import About from "../components/About";
 import SEO from "../components/SEO";
 import TickerBar from "../components/TickerBar";
 
-import heroImage from "../assets/hero-bg.jpg";
+// import heroImage from "../assets/hero-bg.jpg";
+import heroVideo from "../assets/hero-video.mp4";
 
 // Data
 import studioItems from "../data/studioProjects";
@@ -37,10 +38,11 @@ export default function Home() {
       <SEO title="Substans" description="Substans – Live & Studio" />
 
       <Hero
-        title="Logga + film"
+        // title="Logga + film"
         // subtitle="Live • Studio"
         // intro="Modern, personlig och enkel portfolio. Musik, scen, design och strategi."
-        backgroundImage={heroImage}
+        // backgroundImage={heroImage}
+        backgroundVideo={heroVideo}
       />
       <About />
       {/* LIVE */}
